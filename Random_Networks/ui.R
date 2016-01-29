@@ -3,7 +3,8 @@ library(shiny)
 library(igraph)
 shinyUI(
   fluidPage(
-    titlePanel("Graph Parameters"),
+    titlePanel("Random Networks"),
+    hr(),
     fluidRow(
       column(4,
              numericInput('n', 'Number of nodes', value = 50, min = 2, max = 200, step = 1)

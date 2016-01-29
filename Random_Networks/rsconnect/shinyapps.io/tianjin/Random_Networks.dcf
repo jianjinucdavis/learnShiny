@@ -2,8 +2,8 @@ name: Random_Networks
 account: tianjin
 server: shinyapps.io
 appId: 80755
-bundleId: 361145
+bundleId: 361165
 url: https://tianjin.shinyapps.io/Random_Networks/
-when: 1454050296.82146
+when: 1454053528.5674
 asMultiple: FALSE
 asStatic: FALSE
