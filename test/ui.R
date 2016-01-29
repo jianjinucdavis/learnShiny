@@ -1,13 +1,15 @@
-
+library(networkD3)
+library(shiny)
+library(igraph)
 shinyUI(
   fluidPage(
     titlePanel("Graph Parameters"),
     fluidRow(
       column(4,
-             numericInput('n', 'Number of nodes', value = 50, min = 2, max = 1000, step = 1)
+             numericInput('n', 'Number of nodes', value = 50, min = 2, max = 200, step = 1)
              ),
       column(4,
-             sliderInput('p.or.m', 'Probability', value = 0.3, min = 0, max = 1, step = 0.02)
+             sliderInput('p.or.m', 'Probability', value = 0.05, min = 0, max = 1, step = 0.02)
              ),
       
       column(4,
