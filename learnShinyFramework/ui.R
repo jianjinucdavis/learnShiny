@@ -19,6 +19,11 @@ shinyUI(
              sliderInput('nei', 'Neighborhood', value = 3, min = 1,max = 6, step = 1)
              )
     ),
+    fluidRow(
+      column(11, offset = 10,
+             submitButton("Run")
+             )
+      ),
     hr(),
     fluidRow(
       column(4,
