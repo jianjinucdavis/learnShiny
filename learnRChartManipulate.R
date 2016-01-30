@@ -6,27 +6,19 @@ m <- gvisMotionChart(Fruits, 'Fruit', 'Year', options = list(width = 600, height
 plot(m)
 
 
-devtools::install_github('ramnathv/rCharts')
-
-library(rCharts)
-
-
-names(iris) = gsub("\\.", "", names(iris))
-rPlot(SepalLength ~ SepalWidth | Species, data = iris, color = 'Species', type = 'point')
-
-rPlot
-
-haireye = as.data.frame(HairEyeColor)
-head(haireye)
-rPlot(Freq ~ Hair | Eye, color = 'Eye', data = haireye, type = 'bar')
-
-n1 <- nPlot(Freq ~ Hair, group = 'Eye', type = 'bar')
-nPlot
-
 
 library(manipulate)
-manipulate(plot(1:x), x = slider(min = 1, max = 100))
-x = seq(-10, 10, 0.2)
+x <- sample(0:1, 100, TRUE)
+x
+?rbinom
+
+rnorm(100, 1)
+
+x <- sort(runif(100, 0, 1))
+
+plot(x ~ x, col = rgb(0, 0, x))
+
+plot(x ~ x, col = rgb(0, 0, x))
 
 manipulate(plot(x ^ p ~ x, type = "l"), p = slider(min = -3, max = 3, step = 0.5))
 
