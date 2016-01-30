@@ -5,23 +5,26 @@ library(igraph)
 shinyServer(  
   function(input, output) {
     
+    # create graphs using inputs
+    graph_list <- reactive({
+      graph_list <- generateGraphList(n = input$n, nei = input$nei, p.or.m = input$p.or.m)
+      graph_list
+    })
+    graph_centrality_list <- reactive({
+      graph_centrality_list <- lapply(graph_list(), getGraphCentrality)
+      graph_centrality_list
+    })
+    
     
     # graph outputs
     output$Graphs <- renderPlot({
-      # create graphs using inputs
-      graph_list <- generateGraphList(n = input$n, nei = input$nei, p.or.m = input$p.or.m)
-      graph_centrality_list <- lapply(graph_list, getGraphCentrality)
       # Network Visualization
-      sizeList <- lapply(graph_centrality_list, function(x) selectVertexSize(x, input$size))
-      plotGraphs(graph_centrality_list, vertexSize = sizeList)
+      sizeList <- lapply(graph_centrality_list(), function(x) selectVertexSize(x, input$size))
+      plotGraphs(graph_centrality_list(), vertexSize = sizeList)
     })
     output$DegreeDistribution <- renderPlot({
-      # create graphs using inputs
-      graph_list <- generateGraphList(n = input$n, nei = input$nei, p.or.m = input$p.or.m)
-      graph_centrality_list <- lapply(graph_list, getGraphCentrality)
-      
       # Degree Distribution
-      countsList <- lapply(graph_centrality_list, function(x) myHist(V(x)$degree)$counts)
+      countsList <- lapply(graph_centrality_list(), function(x) myHist(V(x)$degree)$counts)
       plotBars(countsList)
     })
     
