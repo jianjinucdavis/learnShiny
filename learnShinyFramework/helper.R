@@ -104,31 +104,38 @@ beautifulGraph <- function(g,
 
 ## == plot degree distribution ==
 
-getDegreeDistribution <- function(graph){
-  degree_graph <- degree(graph)
-  prob_degree <- degree_distribution(graph)
-  prob_degree_df <- data.frame(degree = 0:(length(prob_degree)-1),
-                               prob = prob_degree)
-  return(prob_degree_df)
+myHist <- function(theDegree){
+  theHist <- hist(theDegree, 
+                  breaks = max(theDegree),
+                  plot = FALSE)
+  return(theHist)
 }
 
-
-plot_degreeDistribution <- function(graph_dd, ylim_max, ...) {
-  plot(x = graph_dd$degree, 
-       y = graph_dd$prob, 
-       type = 'n', 
-       bty = 'n', 
-       yaxt = 'n',
-       ylim = c(0, ylim_max),
-       xlab = 'Degree',
-       ylab = 'Probability')
-  points(x = graph_dd$degree, 
-         y = graph_dd$prob, 
-         pch = 16,
-         cex = 0.5,
-         col = rgb(0, 0, 0.65))
+myBar <- function(counts, ymax, axes = FALSE){
+  barplot(counts, 
+          axes = axes, 
+          ylim = c(0, ymax), 
+          space = 0,
+          xlab = "degree"
+  )
 }
 
-
-
-
+plotBars <- function(countsList) {
+  op = par(mfrow = c(1, 3))
+  myBar(counts = countsList[[1]], 
+        ymax = max(unlist(countsList)), 
+        axes = TRUE)
+  axis(1)
+  title("Scale Free", cex.main = 2)
+  myBar(counts = countsList[[2]], 
+        ymax = max(unlist(countsList)), 
+        axes = FALSE)
+  axis(1)
+  title("Random", cex.main = 2)
+  myBar(counts = countsList[[3]], 
+        ymax = max(unlist(countsList)),
+        axes = FALSE)
+  axis(1)
+  title("Small World", cex.main = 2)
+  par(op)  
+}

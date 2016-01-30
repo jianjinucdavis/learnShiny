@@ -32,9 +32,13 @@ shinyUI(
     hr(),
     fluidRow(
       column(12,
-             plotOutput("Graphs")
-      )
-    ),
+             tabsetPanel(
+               id = 'ohMyDearPlots',
+               tabPanel("Network Visualization", plotOutput("Graphs")),
+               tabPanel("Degree Distribution", plotOutput("DegreeDistribution"))
+             )
+             )
+      ),
     br(),
     fluidRow(
       column(4,
