@@ -15,7 +15,6 @@ shinyServer(
       graph_centrality_list
     })
     
-    
     # graph outputs
     output$Graphs <- renderPlot({
       # Network Visualization

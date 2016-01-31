@@ -1,0 +1,10 @@
+name: Exploring_Random_Networks
+account: tianjin
+server: shinyapps.io
+appId: 80960
+bundleId: 361938
+url: https://tianjin.shinyapps.io/Exploring_Random_Networks/
+when: 1454141173.82572
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: test.R
